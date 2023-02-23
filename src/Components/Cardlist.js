@@ -97,18 +97,22 @@ function Cardlist() {
   console.log(cardInfo)
   
   const deleteCard = (id) => {
+    
     setCardInfo(cardInfo.filter(card => card.id !== id))
+
   }
+
+  const cardInfoList = cardInfo.map((card, i) => (
+    <div className='col-md-6'  id={"card" + card.id} >
+      <Card card={card} key={i} deleteCard={deleteCard}/>
+    </div>
+  ))
 
   return (
     <>
       <div className='container'>
         <div className='row mt-5'>
-          {cardInfo.map((card, i) => (
-            <div className='col-md-6' key={i} id={"card" + card.id} >
-              <Card card={card} deleteCard={deleteCard}/>
-            </div>
-          ))}
+          {cardInfoList}
         </div>
       </div>
     </>

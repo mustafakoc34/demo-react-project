@@ -4,6 +4,7 @@ function Card({ card, deleteCard}) {
 
     const [yapilacak,setYapilacak] = useState("");
     const [comment, setComment] = useState([]);
+    console.log(comment)
 
     const ekle =()=>{
         setComment([...comment,
@@ -11,15 +12,13 @@ function Card({ card, deleteCard}) {
                 id:comment.length,
                 comment:yapilacak
             }
-
         ]);
         setYapilacak("");
     }
-    console.log(comment)
 
     return (
         <>
-            <div className="card mb-3" style={{ maxWidth: "540px" }}>
+            <div className="card mb-3" style={{ maxWidth: "540px" }} >
                 <div className="row g-0">
                     <div className="col-md-4">
                         <img style={{ height: "300px" }} src={card.img} className="img-fluid rounded-start" alt="..." />
@@ -39,9 +38,8 @@ function Card({ card, deleteCard}) {
                                     <input onChange={(e) => setYapilacak(e.target.value)} value={yapilacak} type="text" className="form-control" placeholder="Yorumunuzu ekleyin" aria-label="Recipient's username" aria-describedby="button-addon2" />
                                     <button onClick={ekle} className="btn btn-outline-success" type="button" id="button-addon2">Ekle</button>
                                 </div>
-
                             </div>
-                            <h5 className="card-text">Yorumlar: {comment.map(x =><li style={{listStyleType:"number", marginLeft:"20px"}}>{x.comment}</li>)}</h5>
+                            <h5 id={"h5" + card.id} className="card-text">Yorumlar: {comment.map(x =><li style={{listStyleType:"number", marginLeft:"20px"}}>{x.comment}</li>)}</h5>
                         </div>
                     </div>
                 </div>
